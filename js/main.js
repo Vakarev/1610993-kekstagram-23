@@ -1,14 +1,3 @@
-const getRandomInt = (min, max) => {
-  if (min >= 0) {
-    return Math.floor(Math.random() * (max - min)) + min;
-  }
-  return 'impossible, because min < 0';
-}
-console.log(getRandomInt(1, 13));
-
-const getMaxLength = (text, maxLength) => text.length <= maxLength;
-console.log(getMaxLength('test', 2));
-
 const DESCRIPTIONS = [
   'карбюратор',
   'инжектор',
@@ -40,31 +29,41 @@ const NAMES = [
   'Яна',
 ];
 
+const getRandomInt = (min, max) => {
+  if (min >= 0) {
+    return Math.floor(Math.random() * (max - min)) + min;
+  }
+  return 'impossible, because min < 0';
+};
+
+const getMaxLength = (text, maxLength) => text.length <= maxLength;
+
 const SOME_DATA_COUNT = 10;
 
-const getRandomArrayElement = (elements) => {
-  return elements[getRandomInt(0, elements.length - 1)];
-};
+const getRandomArrayElement = (elements) => elements[getRandomInt(0, elements.length - 1)];
 
-const getComment = () => {
-  return {
-    id: getRandomInt(1, 5000),
-    avatar: 'img/avatar-' + getRandomInt(1, 6) + '.svg',
-    message: getRandomArrayElement(MESSAGES),
-    name: getRandomArrayElement(NAMES),
-  };
-};
+const getComment = () => ({
+  id: getRandomInt(1, 5000),
+  avatar: `img/avatar- ${getRandomInt(1, 6)}.svg`,
+  message: getRandomArrayElement(MESSAGES),
+  name: getRandomArrayElement(NAMES),
+});
 
-const getData = () => {
-  return {
-    id: getRandomInt(1, 25),
-    url: 'photos/' + getRandomInt(1, 25) + '.jpg',
-    description: getRandomArrayElement(DESCRIPTIONS),
-    likes: getRandomInt(15, 200),
-    comments: getComment(),
-  };
-};
+const getData = () => ({
+  id: getRandomInt(1, 25),
+  url: `photos/${getRandomInt(1, 25)}.jpg`,
+  description: getRandomArrayElement(DESCRIPTIONS),
+  likes: getRandomInt(15, 200),
+  comments: getComment(),
+});
 
 const someData = new Array(SOME_DATA_COUNT).fill(null).map(() => getData());
 
+// eslint-disable-next-line no-console
+console.log(getRandomInt(1, 13));
+
+// eslint-disable-next-line no-console
+console.log(getMaxLength('test', 2));
+
+// eslint-disable-next-line no-console
 console.log(someData);
