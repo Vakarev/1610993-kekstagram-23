@@ -31,7 +31,7 @@ const NAMES = [
   'Яна',
 ];
 
-const SOME_DATA_COUNT = 10;
+const SOME_DATA_COUNT = 1;
 
 const getRandomArrayElement = (elements) => elements[getRandomInt(0, elements.length - 1)];
 
@@ -42,15 +42,19 @@ const getComment = () => ({
   name: getRandomArrayElement(NAMES),
 });
 
+const getComments = () => new Array(getRandomInt(1, 25)).fill(null).map(() => getComment());
+
 const getData = () => ({
   id: getRandomInt(1, 25),
   url: `photos/${getRandomInt(1, 25)}.jpg`,
   description: getRandomArrayElement(DESCRIPTIONS),
   likes: getRandomInt(15, 200),
-  comments: getComment(),
+  comments: getComments(),
 });
 
-const someData = new Array(SOME_DATA_COUNT).fill(null).map(() => getData());
+const someData = () => new Array(SOME_DATA_COUNT).fill(null).map(() => getData());
 
 // eslint-disable-next-line no-console
 console.log(someData);
+
+export {someData};
