@@ -31,7 +31,7 @@ const NAMES = [
   'Яна',
 ];
 
-const SOME_DATA_COUNT = 1;
+const SOME_DATA_COUNT = 12;
 
 const getRandomArrayElement = (elements) => elements[getRandomInt(0, elements.length - 1)];
 
