@@ -37,12 +37,12 @@ const getRandomArrayElement = (elements) => elements[getRandomInt(0, elements.le
 
 const getComment = () => ({
   id: getRandomInt(1, 5000),
-  avatar: `img/avatar- ${getRandomInt(1, 6)}.svg`,
+  avatar: `img/avatar-${getRandomInt(1, 6)}.svg`,
   message: getRandomArrayElement(MESSAGES),
   name: getRandomArrayElement(NAMES),
 });
 
-const getComments = () => new Array(getRandomInt(1, 25)).fill(null).map(() => getComment());
+const getComments = () => new Array(getRandomInt(1, 6)).fill(null).map(() => getComment());
 
 const getData = () => ({
   id: getRandomInt(1, 25),
@@ -58,3 +58,4 @@ const someData = () => new Array(SOME_DATA_COUNT).fill(null).map(() => getData()
 console.log(someData);
 
 export {someData};
+export {getComments};
