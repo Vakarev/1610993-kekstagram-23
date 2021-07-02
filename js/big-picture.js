@@ -1,5 +1,3 @@
-import {getComments} from './data.js';
-
 const bigPicture = document.querySelector('.big-picture');
 const picture = document.querySelectorAll('.picture');
 const commentCount = bigPicture.querySelector('.social__comment-count');
@@ -40,18 +38,3 @@ document.addEventListener('keydown', (evt) => {
     bigPicture.classList.add('hidden');
   }
 });
-
-const userComment = document.querySelector('.social__comments');
-const commentsTemplate = document.querySelector('#comment').content;
-const createComment = getComments();
-const commentsFragment = document.createDocumentFragment();
-
-createComment.forEach(({avatar, message, name}) => {
-  const commentsElement = commentsTemplate.cloneNode(true);
-  commentsElement.querySelector('.social__picture').src = avatar;
-  commentsElement.querySelector('.social__text').textContent = message;
-  commentsElement.querySelector('.social__picture').alt = name;
-  commentsFragment.appendChild(commentsElement);
-});
-
-userComment.appendChild(commentsFragment);
