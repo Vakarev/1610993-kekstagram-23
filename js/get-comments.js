@@ -1,14 +1,5 @@
-import {getRandomInt} from './util.js';
-
-const DESCRIPTIONS = [
-  'карбюратор',
-  'инжектор',
-  'икпорт',
-  'блютуз',
-  'дзю-до',
-  'дзю-после',
-  'карнавал',
-];
+import {getRandomArrayElement} from './util/get-random-array-element.js';
+import {getRandomInteger} from './util/get-random-integer.js';
 
 const MESSAGES = [
   'Всё отлично!',
@@ -31,31 +22,16 @@ const NAMES = [
   'Яна',
 ];
 
-const SOME_DATA_COUNT = 12;
-
-const getRandomArrayElement = (elements) => elements[getRandomInt(0, elements.length - 1)];
+const MIN_COMMENTS = 1;
+const MAX_COMMENTS = 6;
 
 const getComment = () => ({
-  id: getRandomInt(1, 5000),
-  avatar: `img/avatar-${getRandomInt(1, 6)}.svg`,
+  id: getRandomInteger(1, 6),
+  avatar: `img/avatar-${getRandomInteger(1, 6)}.svg`,
   message: getRandomArrayElement(MESSAGES),
   name: getRandomArrayElement(NAMES),
 });
 
-const getComments = () => new Array(getRandomInt(1, 6)).fill(null).map(() => getComment());
+const getComments = () => new Array(getRandomInteger(MIN_COMMENTS, MAX_COMMENTS)).fill(null).map(() => getComment());
 
-const getData = () => ({
-  id: getRandomInt(1, 25),
-  url: `photos/${getRandomInt(1, 25)}.jpg`,
-  description: getRandomArrayElement(DESCRIPTIONS),
-  likes: getRandomInt(15, 200),
-  comments: getComments(),
-});
-
-const someData = () => new Array(SOME_DATA_COUNT).fill(null).map(() => getData());
-
-// eslint-disable-next-line no-console
-console.log(someData);
-
-export {someData};
 export {getComments};

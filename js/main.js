@@ -1,3 +1,1 @@
-import './data.js';
-import './user-picture.js';
-import './big-picture.js';
+import './show-images.js';
