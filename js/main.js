@@ -1,2 +1,1 @@
-import './data.js';
-import './user-picture.js';
+import './show-images.js';
