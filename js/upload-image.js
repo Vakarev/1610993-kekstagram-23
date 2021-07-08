@@ -1,4 +1,6 @@
 import { isEscEvent } from './util/is-esc-event.js';
+import { hashtagsInput } from './form-hashtags-validation.js';
+import { commentsInput } from './form-comments-validation.js';
 
 const uploadImageInput = document.querySelector('.img-upload__input');
 const uploadImageOverlay =  document.querySelector('.img-upload__overlay');
@@ -30,5 +32,13 @@ uploadImageInput.addEventListener('change', () => {
 
 uploadImageCloseButton.addEventListener('click', () => {
   closeUploadImageForm();
-  document.addEventListener('keydown', onUploadImageEscKeydown);
+  document.removeEventListener('keydown', onUploadImageEscKeydown);
 });
+
+hashtagsInput.onfocus = () => {
+  document.removeEventListener('keydown', onUploadImageEscKeydown);
+};
+
+commentsInput.onfocus = () => {
+  document.removeEventListener('keydown', onUploadImageEscKeydown);
+};

@@ -16,3 +16,5 @@ commentsInput.addEventListener('input', () => {
 
   commentsInput.reportValidity();
 });
+
+export {commentsInput};

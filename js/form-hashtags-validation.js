@@ -2,7 +2,7 @@ const MIN_HASHTAG_LENGTH = 2;
 const MAX_HASHTAG_LENGTH = 100;
 
 const hashtagsInput = document.querySelector('.text__hashtags');
-const hashtagsInputRe = /^#[A-Za-zА-я0-9]{1,19}[ ]{0,1}$/;
+const hashtagsInputRe = /[^#[A-Za-zА-я0-9]{1,19}[ ]{0,1}]{0,5}$/;
 const hashtagsSet = () => hashtagsInput.split(' ');
 
 const hashtagsSetValidation = () => {
@@ -26,3 +26,5 @@ hashtagsInput.addEventListener('input', () => {
 
   hashtagsInput.reportValidity();
 });
+
+export {hashtagsInput};
