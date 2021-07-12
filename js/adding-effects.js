@@ -133,7 +133,6 @@ const imageScale = (evt) => {
         scaleField.value = '25%';
         break;
     }
-
   };
 
   const largeImage = () => {
