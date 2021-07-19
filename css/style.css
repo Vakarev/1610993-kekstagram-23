@@ -494,6 +494,18 @@ main {
           transform: translate(-50%, -50%);
 }
 
+.server-error {
+  position: absolute;
+  width: 500px;
+  height: 174px;
+  text-align: center;
+  top: 265px;
+  left: 520px;
+  background-color: white;
+  font-size: 30px;
+  color: black;
+}
+
 
 /**
  * Превью изображения
