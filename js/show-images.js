@@ -1,11 +1,9 @@
-import {getDataSet} from './get-data-set.js';
 import {showFullSizeImage} from './show-full-image.js';
 
 const imageContainer = document.querySelector('.pictures');
 const imageTemplate = document.querySelector('#picture')
   .content
   .querySelector('.picture');
-const images = getDataSet();
 
 const getImageFragment = (data, template) => {
   const fragment = document.createDocumentFragment();
@@ -23,5 +21,4 @@ const getImageFragment = (data, template) => {
   return fragment;
 };
 
-const getFragment = getImageFragment(images, imageTemplate);
-imageContainer.appendChild(getFragment);
+export {getImageFragment, imageTemplate, imageContainer};
