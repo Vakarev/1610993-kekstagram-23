@@ -21,4 +21,9 @@ const getImageFragment = (data, template) => {
   return fragment;
 };
 
-export {getImageFragment, imageTemplate, imageContainer};
+const renderPhotos = (photos) => {
+  const getFragment = getImageFragment(photos, imageTemplate);
+  imageContainer.appendChild(getFragment);
+};
+
+export {renderPhotos};
