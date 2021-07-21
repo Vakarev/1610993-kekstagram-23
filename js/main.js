@@ -4,3 +4,4 @@ import './form-comments-validation.js';
 import './form-hashtags-validation.js';
 import './adding-effects.js';
 import './api.js';
+import './filter-images.js';

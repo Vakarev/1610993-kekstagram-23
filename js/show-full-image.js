@@ -84,4 +84,4 @@ closeFullImageButton.addEventListener('click', () => {
   document.addEventListener('keydown', onFullImageEscKeydown);
 });
 
-export {showFullSizeImage};
+export {showFullSizeImage, getImageComments};
