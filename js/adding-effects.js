@@ -4,7 +4,7 @@ const uploudedImageContainer = document.querySelector('.img-upload__preview');
 const uploudedImage = uploudedImageContainer.querySelector('img');
 const effectLevelValue = document.querySelector('.effect-level__value');
 const scaleField = document.querySelector('.scale__control--value');
-const effectRadioList = newFilePopup.querySelectorAll('.effects__radio');
+const effectsList = newFilePopup.querySelectorAll('.effects__radio');
 const scaleControl = newFilePopup.querySelector('.img-upload__scale');
 
 noUiSlider.create(effectSlider, {
@@ -37,20 +37,18 @@ const getSliderOptions = (minValue, maxValue, stepValue) => {
     start: maxValue,
     step: stepValue,
     format: {
-      to: function (value) {
+      to: (value) => {
         if (Number.isInteger(value)) {
           return value.toFixed(0);
         }
         return value.toFixed(1);
       },
-      from: function (value) {
-        return parseFloat(value);
-      },
+      from: (value) => parseFloat(value),
     },
   });
 };
 
-const addingEffects = (evt) => {
+const addEffects = (evt) => {
   const targetElementValue  = evt.target.value;
   let styleFilter;
 
@@ -87,7 +85,7 @@ const addingEffects = (evt) => {
       break;
     case 'heat':
       styleFilter = 'brightness';
-      getSliderOptions(0, 3, 0.1);
+      getSliderOptions(1, 3, 0.1);
       break;
     case 'none':
       break;
@@ -110,12 +108,12 @@ const addingEffects = (evt) => {
   });
 };
 
-const imageScale = (evt) => {
+const getImageScale = (evt) => {
 
   const buttonSmaller = document.querySelector('.scale__control--smaller');
   const buttonBigger = document.querySelector('.scale__control--bigger');
 
-  const reducedImage = () => {
+  const getReduceImage = () => {
 
     switch (scaleField.value) {
       case '100%':
@@ -135,7 +133,7 @@ const imageScale = (evt) => {
     }
   };
 
-  const largeImage = () => {
+  const getLargeImage = () => {
 
     switch (scaleField.value) {
       case '75%':
@@ -156,13 +154,15 @@ const imageScale = (evt) => {
   };
 
   if(evt.target.textContent === 'Уменьшить') {
-    return reducedImage();
+    return getReduceImage();
   }
-  largeImage();
+  getLargeImage();
 };
 
-scaleControl.addEventListener('click', imageScale);
+scaleControl.addEventListener('click', getImageScale);
 
-for(let counter = 0 ; counter <= effectRadioList.length - 1 ; counter++) {
-  effectRadioList[counter].addEventListener('click', addingEffects);
+for(let counter = 0 ; counter <= effectsList.length - 1 ; counter++) {
+  effectsList[counter].addEventListener('click', addEffects);
 }
+
+export {uploudedImage, scaleField, effectSlider};

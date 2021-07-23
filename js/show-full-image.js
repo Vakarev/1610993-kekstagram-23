@@ -19,7 +19,12 @@ const getImageComments = (comments) => {
   for (let i = 0; i < comments.length; i++) {
     const newComment = document.createElement('li');
     newComment.classList.add('social__comment');
-    newComment.innerHTML = `<img class="social__picture" src="${comments[i].avatar}" alt="${comments[i].name}" width="35" height="35"><p class="social__text">${comments[i].message}</p>`;
+    newComment.innerHTML = '<img class="social__picture" src="" alt="" width="35" height="35"><p class="social__text"></p>';
+    const socialPicture = newComment.querySelector('.social__picture');
+    const socialText = newComment.querySelector('.social__text');
+    socialPicture.src = comments[i].avatar;
+    socialPicture.alt = comments[i].name;
+    socialText.textContent = comments[i].message;
     fragment.appendChild(newComment);
   }
 
@@ -38,7 +43,7 @@ const closeFullImage = () => {
   commentsLoaderButton.classList.remove('hidden');
 };
 
-const commentLoaderHandler = () => {
+const commentsLoadHandler = () => {
   imageComments.innerHTML = '';
 
   currentCommentsNumber += LOAD_COMMENTS_NUMBER;
@@ -71,7 +76,7 @@ const showFullSizeImage = (photo) => {
 
   currentCommentsNumber = LOAD_COMMENTS_NUMBER;
   currentComments = photo.comments;
-  commentsLoaderButton.addEventListener('click', commentLoaderHandler);
+  commentsLoaderButton.addEventListener('click', commentsLoadHandler);
 
   fullSizeImage.classList.remove('hidden');
   document.body.classList.add('modal-open');
@@ -81,7 +86,7 @@ const showFullSizeImage = (photo) => {
 
 closeFullImageButton.addEventListener('click', () => {
   closeFullImage();
-  document.addEventListener('keydown', onFullImageEscKeydown);
+  document.removeEventListener('keydown', onFullImageEscKeydown);
 });
 
 export {showFullSizeImage, getImageComments};

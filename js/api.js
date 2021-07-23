@@ -35,6 +35,7 @@ const sendData = (onSuccess, onFail, body) => {
     })
     .catch(() => {
       closeUploadImageForm();
+      showFailMessage();
     });
 };
 

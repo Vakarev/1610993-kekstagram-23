@@ -1,4 +1,5 @@
 import { isEscEvent } from './is-esc-event.js';
+import { onUploadImageEscKeydown } from '../upload-image-form.js';
 
 const successPopup = document.querySelector('#success').content.querySelector('.success');
 const successButton = successPopup.querySelector('.success__button');
@@ -23,6 +24,8 @@ const showSuccessMessage = () => {
     const target = e.target;
     if (target === successPopup) {
       successPopup.classList.add('hidden');
+      document.removeEventListener('keydown', onCloseSuccessEscKeydown);
+      document.removeEventListener('keydown', onUploadImageEscKeydown);
     }
   });
 };
@@ -30,6 +33,7 @@ const showSuccessMessage = () => {
 successButton.addEventListener('click', () => {
   closeSuccessPopup();
   document.removeEventListener('keydown', onCloseSuccessEscKeydown);
+  document.removeEventListener('keydown', onUploadImageEscKeydown);
 });
 
 export {showSuccessMessage};
