@@ -8,11 +8,11 @@ const closeSuccessPopup = () => {
   successPopup.classList.add('hidden');
 };
 
-const onClosePopup = (e) => {
+const onCloseSuccessPopupClickHandler = (e) => {
   const target = e.target;
   if (target === successPopup) {
     closeSuccessPopup();
-    document.removeEventListener('click', onClosePopup);
+    document.removeEventListener('click', onCloseSuccessPopupClickHandler);
     document.removeEventListener('keydown', onCloseSuccessEscKeydown);
     document.removeEventListener('keydown', onUploadImageEscKeydown);
   }
@@ -22,14 +22,14 @@ const showSuccessMessage = () => {
   document.body.appendChild(successPopup);
   successPopup.classList.remove('hidden');
   document.addEventListener('keydown', onCloseSuccessEscKeydown);
-  document.addEventListener('click', onClosePopup);
+  document.addEventListener('click', onCloseSuccessPopupClickHandler);
 };
 
 successButton.addEventListener('click', () => {
   closeSuccessPopup();
   document.removeEventListener('keydown', onCloseSuccessEscKeydown);
   document.removeEventListener('keydown', onUploadImageEscKeydown);
-  document.removeEventListener('click', onClosePopup);
+  document.removeEventListener('click', onCloseSuccessPopupClickHandler);
 });
 
-export {showSuccessMessage, closeSuccessPopup, onClosePopup};
+export {showSuccessMessage, closeSuccessPopup, onCloseSuccessPopupClickHandler};

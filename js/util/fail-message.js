@@ -8,11 +8,11 @@ const closeFailPopup = () => {
   failPopup.classList.add('hidden');
 };
 
-const onCloseFailPopup = (e) => {
+const onCloseFailPopupClickHandler = (e) => {
   const target = e.target;
   if (target === failPopup) {
     closeFailPopup();
-    document.removeEventListener('click', onCloseFailPopup);
+    document.removeEventListener('click', onCloseFailPopupClickHandler);
     document.removeEventListener('keydown',onCloseFailEscKeydown);
     document.removeEventListener('keydown', onUploadImageEscKeydown);
   }
@@ -22,15 +22,15 @@ const showFailMessage = () => {
   document.body.appendChild(failPopup);
   failPopup.classList.remove('hidden');
   document.addEventListener('keydown', onCloseFailEscKeydown);
-  document.addEventListener('click', onCloseFailPopup);
+  document.addEventListener('click', onCloseFailPopupClickHandler);
 };
 
 failButton.addEventListener('click', () => {
   closeFailPopup();
   document.removeEventListener('keydown', onCloseFailEscKeydown);
   document.removeEventListener('keydown', onUploadImageEscKeydown);
-  document.removeEventListener('click', onCloseFailPopup);
+  document.removeEventListener('click', onCloseFailPopupClickHandler);
 });
 
-export {showFailMessage, closeFailPopup, onCloseFailPopup};
+export {showFailMessage, closeFailPopup, onCloseFailPopupClickHandler};
 
