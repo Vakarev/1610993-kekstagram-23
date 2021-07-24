@@ -4,7 +4,7 @@ const uploudedImageContainer = document.querySelector('.img-upload__preview');
 const uploudedImage = uploudedImageContainer.querySelector('img');
 const effectLevelValue = document.querySelector('.effect-level__value');
 const scaleField = document.querySelector('.scale__control--value');
-const effectsList = newFilePopup.querySelectorAll('.effects__radio');
+const effectsFields = newFilePopup.querySelectorAll('.effects__radio');
 const scaleControl = newFilePopup.querySelector('.img-upload__scale');
 
 noUiSlider.create(effectSlider, {
@@ -48,7 +48,7 @@ const getSliderOptions = (minValue, maxValue, stepValue) => {
   });
 };
 
-const addEffects = (evt) => {
+const onUploadImageAddEffectHandler = (evt) => {
   const targetElementValue  = evt.target.value;
   let styleFilter;
 
@@ -108,7 +108,7 @@ const addEffects = (evt) => {
   });
 };
 
-const getImageScale = (evt) => {
+const onScaleFieldScaleHandler = (evt) => {
 
   const buttonSmaller = document.querySelector('.scale__control--smaller');
   const buttonBigger = document.querySelector('.scale__control--bigger');
@@ -159,10 +159,10 @@ const getImageScale = (evt) => {
   getLargeImage();
 };
 
-scaleControl.addEventListener('click', getImageScale);
+scaleControl.addEventListener('click', onScaleFieldScaleHandler);
 
-for(let counter = 0 ; counter <= effectsList.length - 1 ; counter++) {
-  effectsList[counter].addEventListener('click', addEffects);
+for(let counter = 0 ; counter <= effectsFields.length - 1 ; counter++) {
+  effectsFields[counter].addEventListener('click', onUploadImageAddEffectHandler);
 }
 
 export {uploudedImage, scaleField, effectSlider};

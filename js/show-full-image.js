@@ -43,7 +43,7 @@ const closeFullImage = () => {
   commentsLoaderButton.classList.remove('hidden');
 };
 
-const commentsLoadHandler = () => {
+const onImageCommentsLoadHandler = () => {
   imageComments.innerHTML = '';
 
   currentCommentsNumber += LOAD_COMMENTS_NUMBER;
@@ -76,7 +76,7 @@ const showFullSizeImage = (photo) => {
 
   currentCommentsNumber = LOAD_COMMENTS_NUMBER;
   currentComments = photo.comments;
-  commentsLoaderButton.addEventListener('click', commentsLoadHandler);
+  commentsLoaderButton.addEventListener('click', onImageCommentsLoadHandler);
 
   fullSizeImage.classList.remove('hidden');
   document.body.classList.add('modal-open');

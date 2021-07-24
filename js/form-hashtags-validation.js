@@ -1,9 +1,9 @@
 const hashTagField = document.querySelector('.text__hashtags');
 
-hashTagField.addEventListener('change', () => {
+hashTagField.addEventListener('input', () => {
   const regex = /^#[A-Za-zА-Яа-я0-9]{1,19}$/;
   const hashTags = hashTagField.value.split(' ');
-  const errorsList = [];
+  let errorsTags = [];
   const lowerCaseTags = [];
 
   hashTags.forEach((element) => {
@@ -11,19 +11,23 @@ hashTagField.addEventListener('change', () => {
     lowerCaseTags.push(element.toLowerCase());
 
     if(!regex.test(element)) {
-      errorsList.push(element);
+      errorsTags.push(element);
     } else if (element.length === 1){
-      errorsList.push(element);
+      errorsTags.push(element);
     }
   });
 
   const repeatedTegs = lowerCaseTags.filter((elm, index, array) => array.indexOf(elm) !== index);
 
   repeatedTegs.forEach((element) => {
-    errorsList.push(element);
+    errorsTags.push(element);
   });
 
-  if(errorsList.length >= 1) {
+  if(hashTagField.value.length === 0) {
+    errorsTags = [];
+  }
+
+  if(errorsTags.length >= 1) {
     hashTagField.setCustomValidity('Хет-тег должен начинаться с символа #,\
             не повторяться,\
             cостоять из букв и цифр, а также иметь длину от 1 до 20 символов\
